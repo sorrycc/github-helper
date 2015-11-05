@@ -1,0 +1,84 @@
+
+.Events {
+  height: 423px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.EventsWrap {
+  position: relative;
+  .spinner {
+    position: absolute;
+    right: 6px;
+    top: -30px;
+    width: 14px;
+    height: 14px;
+  }
+  button {
+    margin-bottom: 8px;
+  }
+}
+
+.Event {
+  position: relative;
+  margin: 3px 0;
+  cursor: default;
+
+  &:hover {
+    background: #184274;
+    color: #FFF;
+
+    strong {
+      display: block;
+    }
+  }
+
+  display: flex;
+  align-content: center;
+
+  img {
+    margin-right: 3px;
+    border-radius: 8px;
+    margin-top: 1px;
+  }
+  i {
+    margin-right: 6px;
+    width: 10px;
+    height: 10px;
+    margin-top: 3px;
+    &.unread {
+      background: #F1ED91;
+      border-radius: 5px;
+    }
+  }
+  .user {
+    width: 70px;
+  }
+  b {
+    margin: 0 6px 0 0;
+    background: #b6b4a5;
+    color: #000;
+    padding: 0 3px;
+    border-radius: 3px;
+
+    &.type-WatchEvent {
+      background: #d24043;
+    }
+  }
+  .repo {
+  }
+  strong {
+    display: none;
+    margin-left: 6px;
+    font-weight: normal;
+    color: #ccc;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #184274;
+    padding-left: 6px;
+  }
+  span {
+  }
+}

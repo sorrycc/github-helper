@@ -1,0 +1,16 @@
+<script>
+
+  function parseLink(str) {
+    const ret = {};
+    str.split(',').forEach(function(item) {
+      var m = item.match(/<(.+?)>; rel=\"(.+?)\"/);
+      ret[m[2]] = m[1];
+    });
+    return ret;
+  }
+
+  fetch('https://api.github.com/users/sorrycc/starred?per_page=1&page=2').then(function(res) {
+    console.log(parseLink(res.headers.get('Link')));
+  })
+
+</script>

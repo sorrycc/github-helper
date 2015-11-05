@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quark Shell</title>
+  <style>
+  html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+  }
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+    font-family: -apple-system-font, sans-serif;
+  }
+  h1 {
+    background-color: rgb(237, 237, 237);
+    text-align: center;
+    font-weight: normal;
+    color: #333;
+    margin: 0;
+    padding: 12px 0 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+  }
+  #app-version,
+  #app-bundle-version {
+    color: #777;
+    font-size: 13px;
+  }
+  .button {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .button p {
+    margin: 11px 0;
+  }
+  button {
+    width: 90px;
+    margin: 3px;
+    padding: 5px 0;
+    font-family: -apple-system-font, sans-serif;
+    background-color: #eee;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+  }
+  button:hover {
+    background-color: #f2f2f2;
+  }
+  button:active {
+    background-color: #e8e8e8;
+    color: black;
+  }
+  canvas {
+    display: none;
+  }
+  </style>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>
+    Quark Shell
+    <span id="app-version"></span>
+    <span id="app-bundle-version"></span>
+  </h1>
+
+  <audio src="audio.aac"></audio>
+
+  <div class="button">
+    <p>
+      <button onclick="quark.notify({title: 'Quark Shell', content: 'Hello World', popupOnClick: true})">Notify</button>
+      <button onclick="quark.closePopup()">Close Popup</button>
+      <button onclick="quark.newWindow({url: 'about.html', width: 600, height: 400, x: 'center', y: 'center'})">New Window</button>
+    </p>
+    <p>
+      <button onclick="quark.openPreferences()">Preferences</button>
+      <button onclick="quark.openURL('https://github.com/xhacker')">Open URL</button>
+      <button onclick="quark.checkUpdate('https://rawgit.com/HackPlan/quark-shell-mac/master/updater/SampleAppcast.xml')">Check Update</button>
+    </p>
+    <p>
+      <button onclick="setIcon()">Set Icon</button>
+      <button onclick="quark.setLabel('03:14 AM 喵')">Set Label</button>
+      <button id="show-menu">Show Menu</button>
+    </p>
+    <p>
+      <button onclick="$('audio')[0].play()">Audio</button>
+      <button id="toggle-pin">Pin</button>
+      <button onclick="confirm('Quark Shell rocks!')">Confirm</button>
+    </p>
+    <p>
+      <button onclick="quark.resizePopup({width: 400, height: 320})">Resize</button>
+      <button style="visibility: hidden;"></button>
+      <button onclick="quark.quit()">Quit</button>
+    </p>
+  </div>
+  <canvas id="icon"></canvas>
+  <canvas id="highlighted-icon"></canvas>
+  <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

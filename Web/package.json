@@ -1,0 +1,28 @@
+{
+  "entry": {
+    "index": "./entry/index.jsx"
+  },
+  "dependencies": {
+    "antd": "~0.10.0-beta8",
+    "expect.js": "~0.3.1",
+    "moment": "~2.10.6",
+    "object-assign": "~4.0.1",
+    "react": "~0.14.1",
+    "react-dom": "~0.14.1",
+    "react-redux": "~4.0.0",
+    "react-spinkit": "~1.1.4",
+    "redux": "~3.0.4",
+    "redux-logger": "~2.0.4",
+    "redux-thunk": "~1.0.0",
+    "whatwg-fetch": "~0.10.0"
+  },
+  "devDependencies": {
+    "antd-bin": "~0.10.0"
+  },
+  "scripts": {
+    "server": "antd server -p 8001",
+    "dev": "antd build --debug --watch -o ../iOS/app/",
+    "test": "antd test",
+    "build": "rm -rf dist && antd build --debug"
+  }
+}

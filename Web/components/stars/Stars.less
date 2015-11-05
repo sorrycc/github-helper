@@ -1,0 +1,39 @@
+
+.Stars {
+  height: 423px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.Star {
+  display: flex;
+  margin: 3px 0;
+
+  &:hover {
+    background: #184274;
+    color: #FFF;
+
+    a {
+      color: #fff !important;
+    }
+  }
+
+  .avatar {
+    width: 30px;
+    text-align: center;
+
+    img {
+      border-radius: 8px;
+      margin-top: 2px;
+    }
+  }
+  .main {
+    flex: 1;
+
+    a {
+      margin-right: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}
