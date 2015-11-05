@@ -7,14 +7,18 @@
 
 .Star {
   display: flex;
-  margin: 3px 0;
+  margin: 3px 0 9px;
+  cursor: default;
 
   &:hover {
     background: #184274;
     color: #FFF;
 
-    a {
+    b {
       color: #fff !important;
+    }
+    .description {
+      color: #dcdcdc !important;
     }
   }
 
@@ -30,10 +34,20 @@
   .main {
     flex: 1;
 
-    a {
+    b {
       margin-right: 8px;
       font-weight: bold;
       color: #333;
+    }
+
+    i {
+      font-style: normal;
+      margin-left: 3px;
+    }
+
+    .description {
+      font-style: normal;
+      color: #666;
     }
   }
 }

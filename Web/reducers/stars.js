@@ -28,6 +28,11 @@ export default function(state = { items:[] }, action) {
         items,
       });
 
+    case 'STARS_SEARCH':
+      return assign({}, state, {
+        key: payload.key,
+      });
+
     default:
       return state;
   }

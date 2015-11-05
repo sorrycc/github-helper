@@ -1,4 +1,5 @@
 import React from 'react';
+import { openUrl } from '../../common/utils';
 
 export default React.createClass({
 
@@ -6,23 +7,27 @@ export default React.createClass({
     data: React.PropTypes.object.isRequired,
   },
 
+  handleClick() {
+    openUrl(this.props.data.html_url);
+  },
+
   render() {
     const {
-        language, full_name, html_url, stargazers_count, description,
+        language, full_name, stargazers_count, description,
         owner,
       } = this.props.data;
 
-    return <div className="Star">
+    return <div className="Star" onClick={this.handleClick}>
       <div className="avatar">
-        <img src={owner.avatar_url + 's=40'} width="16" height="16" />
+        <img src={owner.avatar_url + '&s=40'} width="16" height="16" />
       </div>
       <div className="main">
         <div>
-          <a href={html_url} target="_blank">{full_name}</a>
+          <b>{full_name}</b>
           {language}
-          ({stargazers_count})
+          <i>({stargazers_count})</i>
         </div>
-        <div>
+        <div className="description">
           {description}
         </div>
       </div>

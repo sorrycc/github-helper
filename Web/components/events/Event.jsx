@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import getType from './getType';
 import getUrl from './getUrl';
+import { openUrl } from '../../common/utils';
 
 export default React.createClass({
 
@@ -15,11 +16,7 @@ export default React.createClass({
     const url = getUrl[type]
       ? getUrl[type](this.props.data)
       : `https://github.com/${this.props.data.repo.name}`;
-    if (window.quark) {
-      quark.openURL(url);
-    } else {
-      window.open(url);
-    }
+    openUrl(url);
   },
 
   render() {

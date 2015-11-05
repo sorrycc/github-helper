@@ -45,4 +45,18 @@ export function updateAsync() {
   };
 }
 
+export function search(key) {
+  return (dispatch) => {
+    dispatch({
+      type: 'STARS_SET_STATE',
+      payload: {key},
+    });
+
+    dispatch({
+      type: 'SET_ACTIVE_KEY',
+      payload: {activeKey: "1"},
+    });
+  };
+}
+
 

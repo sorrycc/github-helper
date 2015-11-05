@@ -19,7 +19,16 @@ export default React.createClass({
   },
 
   render() {
-    const { items, isInitFetching, isFetching } = this.props.stars;
+    const { items, isInitFetching, isFetching, key } = this.props.stars;
+
+    let newItems = items;
+    if (key) {
+      console.log('key', key);
+      newItems = newItems.filter(item => {
+        return item.full_name.toLowerCase().indexOf(key.toLowerCase()) > -1 ||
+          (item.description && item.description.toLowerCase().indexOf(key.toLowerCase()) > -1);
+      });
+    }
 
     if (isInitFetching) {
       return <div>
@@ -28,7 +37,7 @@ export default React.createClass({
     }
 
     return <div className="Stars">
-      {items.map(item => <Star key={item.id} data={item} />)}
+      {newItems.slice(0,50).map(item => <Star key={item.id} data={item} />)}
     </div>;
   },
 });
