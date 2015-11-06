@@ -29,9 +29,11 @@ export default React.createClass({
         <span className="user">
           {actor.login}
         </span>
-        <b className={`type-${type}`}>{getType(type, this.props.data)}</b>
-        <span className="repo">{repo.name}</span>
-        <strong>{moment(created_at).fromNow()}</strong>
+        <div style={{flex:1}}>
+          <b className={`type-${type}`}>{getType(type, this.props.data)}</b>
+          <span className="repo">{repo.name}</span>
+          <strong>{moment(created_at).fromNow()}</strong>
+        </div>
       </div>;
   },
 });
