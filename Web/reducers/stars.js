@@ -18,7 +18,6 @@ export default function(state = { items:[] }, action) {
       const ids = state.items.map(item => item.id);
       const newItems = payload.items.filter(item => ids.indexOf(item.id) === -1);
       let items;
-      console.warn('isInit', payload.isInit);
       if (payload.isInit) {
         items = state.items.concat(newItems);
       } else {

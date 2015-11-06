@@ -11,10 +11,15 @@ export default React.createClass({
 
   componentDidMount() {
     const { isInited } = this.props.stars;
-    const { initAsync } = this.props.actions;
+    const { initAsync, updateAsync } = this.props.actions;
 
     if (!isInited) {
-      initAsync();
+      initAsync(() => {
+        setInterval(updateAsync, 1000 * 60 * 5);
+      });
+    } else {
+      updateAsync();
+      setInterval(updateAsync, 1000 * 60 * 5);
     }
   },
 

@@ -2,7 +2,7 @@ import assign from 'object-assign';
 
 const username = 'sorrycc';
 
-export function initAsync() {
+export function initAsync(callback) {
   return (dispatch) => {
     dispatch({type: 'STARS_CLEAN_ITEMS'});
     dispatch({type: 'STARS_SET_STATE', payload: { isInitFetching: true }});
@@ -30,6 +30,10 @@ export function initAsync() {
           } else {
             dispatch({type: 'STARS_SET_STATE', payload: { isInitFetching: false }});
             dispatch({type: 'STARS_SET_STATE', payload: { isInited: true }});
+
+            if (callback) {
+              callback();
+            }
           }
         });
       })
@@ -42,6 +46,14 @@ export function initAsync() {
 export function updateAsync() {
   return (dispatch) => {
     dispatch({type: 'STARS_SET_STATE', payload: { isFetching: true }});
+
+    const url = `https://api.github.com/users/${username}/starred?per_page=100&page=1`;
+    fetch(url).then(res => res.json()).then(items => {
+      dispatch({
+        type: 'STARS_SET_ITEMS',
+        payload: { items },
+      });
+    });
   };
 }
 
