@@ -8,7 +8,8 @@ export default React.createClass({
 
   propTypes: {
     data: React.PropTypes.object.isRequired,
-    actions: React.PropTypes.object.isRequired,
+    onMouseEnter: React.PropTypes.func.isRequired,
+    onMouseLeave: React.PropTypes.func.isRequired,
   },
 
   handleClick() {
@@ -20,10 +21,10 @@ export default React.createClass({
   },
 
   render() {
-    const { id, read, type, actor, repo, created_at } = this.props.data;
-    const { markRead } = this.props.actions;
+    const { read, type, actor, repo, created_at } = this.props.data;
+    const { onMouseEnter, onMouseLeave } = this.props;
 
-    return <div className="Event" onMouseEnter={(e) => markRead(id)} onClick={this.handleClick}>
+    return <div className="Event" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={this.handleClick}>
         <i className={read ? 'readed' : 'unread'}></i>
         <img src={actor.avatar_url + 'v=3&s=40'} width="16" height="16" />
         <span className="user">
