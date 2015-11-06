@@ -4,7 +4,6 @@
   },
   "dependencies": {
     "antd": "~0.10.0-beta8",
-    "expect.js": "~0.3.1",
     "moment": "~2.10.6",
     "object-assign": "~4.0.1",
     "react": "~0.14.1",
@@ -17,12 +16,12 @@
     "whatwg-fetch": "~0.10.0"
   },
   "devDependencies": {
-    "antd-bin": "~0.10.0"
+    "antd-bin": "~0.10.0",
+    "expect.js": "~0.3.1"
   },
   "scripts": {
     "server": "antd server -p 8001",
-    "dev": "antd build --debug --watch -o ../iOS/app/",
-    "test": "antd test",
-    "build": "rm -rf dist && antd build --debug"
+    "dev": "antd build --debug --watch -o ./OSX/app/",
+    "copy": "cp ./*.html ./OSX/app/"
   }
 }

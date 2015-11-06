@@ -10,6 +10,7 @@ const data = localStorage.getItem('data');
 const initialStore = data ? JSON.parse(data) : {};
 
 if (window.quark) {
+  quark.debug = true;
   quark.resizePopup({
     width: 390,
     height: 565,

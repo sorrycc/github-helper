@@ -18,25 +18,36 @@ export function initAsync(callback) {
 
     function fetchItems(url) {
       fetch(url).then(res => {
+        console.log('done', url);
+        console.log('res', res);
+
         res.json().then(items => {
+          console.log(items.length);
           dispatch({
             type: 'STARS_SET_ITEMS',
-            payload: { items, isInit: true },
+            payload: {items, isInit: true},
           });
 
           const links = parseLink(res.headers.get('Link'));
+          console.log('links', links);
           if (links.next) {
+            console.log('fetch', links.next);
             fetchItems(links.next);
           } else {
-            dispatch({type: 'STARS_SET_STATE', payload: { isInitFetching: false }});
-            dispatch({type: 'STARS_SET_STATE', payload: { isInited: true }});
+            dispatch({type: 'STARS_SET_STATE', payload: {isInitFetching: false}});
+            dispatch({type: 'STARS_SET_STATE', payload: {isInited: true}});
 
             if (callback) {
               callback();
             }
           }
+        }, (err) => {
+          console.log('json parse error', err);
         });
-      })
+
+      }, (err) => {
+        console.log('fetch error', err);
+      });
     }
 
     fetchItems(`https://api.github.com/users/${username}/starred?per_page=100&page=1`);
