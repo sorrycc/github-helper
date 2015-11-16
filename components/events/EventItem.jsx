@@ -24,7 +24,7 @@ export default React.createClass({
     const { read, type, actor, repo, created_at } = this.props.data;
     const { onMouseEnter, onMouseLeave } = this.props;
 
-    return <div className="Event" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={this.handleClick}>
+    return <div className="event-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={this.handleClick}>
         <i className={read ? 'readed' : 'unread'}></i>
         <img src={actor.avatar_url + 'v=3&s=40'} width="16" height="16" />
         <span className="user">

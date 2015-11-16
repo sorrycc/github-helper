@@ -1,6 +1,6 @@
 import React from 'react';
-import Star from './Star.jsx';
-import './Stars.less';
+import StarItem from './StarItem.jsx';
+import './StarList.less';
 
 export default React.createClass({
 
@@ -25,11 +25,11 @@ export default React.createClass({
 
   render() {
     const { items, isInitFetching, isFetching, key } = this.props.stars;
+    let newItems;
 
-    let newItems = items;
     if (key) {
       console.log('key', key);
-      newItems = newItems.filter(item => {
+      newItems = items.filter(item => {
         return item.full_name.toLowerCase().indexOf(key.toLowerCase()) > -1 ||
           (item.description && item.description.toLowerCase().indexOf(key.toLowerCase()) > -1);
       });
@@ -41,8 +41,8 @@ export default React.createClass({
       </div>;
     }
 
-    return <div className="Stars">
-      {newItems.slice(0,50).map(item => <Star key={item.id} data={item} />)}
+    return <div className="star-list">
+      {newItems.slice(0,50).map(item => <StarItem key={item.id} data={item} />)}
     </div>;
   },
 });

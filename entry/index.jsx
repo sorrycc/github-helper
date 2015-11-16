@@ -4,7 +4,6 @@ import configureStore from '../store/configureStore';
 import App from '../containers/App';
 import { Provider } from 'react-redux';
 import './index.less';
-import 'whatwg-fetch';
 
 const data = localStorage.getItem('data');
 const initialStore = data ? JSON.parse(data) : {};

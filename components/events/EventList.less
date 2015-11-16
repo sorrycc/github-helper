@@ -1,13 +1,13 @@
 
-.Events {
-  height: 423px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.EventsWrap {
+.event-list {
   position: relative;
-  .spinner {
+
+  > .list {
+    height: 423px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  > .spinner {
     position: absolute;
     right: 6px;
     top: -30px;
@@ -19,7 +19,7 @@
   }
 }
 
-.Event {
+.event-item {
   position: relative;
   margin: 3px 0;
   cursor: default;
@@ -64,8 +64,6 @@
     &.type-WatchEvent {
       background: #d24043;
     }
-  }
-  .repo {
   }
   strong {
     display: none;

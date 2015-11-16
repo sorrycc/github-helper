@@ -1,7 +1,7 @@
 import React from 'react';
-import Event from './Event.jsx';
+import EventItem from './EventItem.jsx';
 import Spinner from 'react-spinkit';
-import './Events.less';
+import './EventList.less';
 
 export default React.createClass({
 
@@ -11,9 +11,14 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    const {fetchEventsAsync} =  this.props.actions;
-    fetchEventsAsync();
-    setInterval(fetchEventsAsync, 1000 * 60 * 5);
+    this.fetchEvents();
+    const interval = 1000 * 60 * 5; // 5 分钟
+    setInterval(this.fetchEvents, interval);
+  },
+
+  fetchEvents() {
+    const { events } = this.props;
+    this.props.actions.fetchAsync(events);
   },
 
   enterTimer: null,
@@ -27,11 +32,11 @@ export default React.createClass({
     if (this.leaveTimer) clearTimeout(this.leaveTimer);
 
     if (this.markReadImmediately) {
-      this.props.actions.markRead(id);
+      this.props.actions.markOneAsRead(id);
     } else {
       this.enterTimer = setTimeout(() => {
         this.markReadImmediately = true;
-        this.props.actions.markRead(id);
+        this.props.actions.markOneAsRead(id);
       }, this.enterDelay);
     }
   },
@@ -47,12 +52,12 @@ export default React.createClass({
 
   render() {
     const { items, isFetching } = this.props.events;
-    return (<div className="EventsWrap">
-      <div className="Events">
-        {items.slice(0, 20).map((item, index) =>
-          <Event key={index} data={item} actions={this.props.actions}
-                 onMouseEnter={this.handleMouseEnter.bind(this, item.id)}
-                 onMouseLeave={this.handleMouseLeave}
+    return (<div className="event-list">
+      <div className="list">
+        {items.slice(0, 50).map((item, index) =>
+          <EventItem key={index} data={item} actions={this.props.actions}
+                     onMouseEnter={this.handleMouseEnter.bind(this, item.id)}
+                     onMouseLeave={this.handleMouseLeave}
           />
         )}
       </div>

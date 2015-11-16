@@ -17,7 +17,7 @@ export default React.createClass({
         owner,
       } = this.props.data;
 
-    return <div className="Star" onClick={this.handleClick}>
+    return <div className="star-item" onClick={this.handleClick}>
       <div className="avatar">
         <img src={owner.avatar_url + '&s=40'} width="16" height="16" />
       </div>

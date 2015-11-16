@@ -1,48 +1,42 @@
 import assign from 'object-assign';
+import fetch from '../common/fetch';
 
 const username = 'sorrycc';
 
-export function fetchEventsAsync() {
-  return (dispatch, getState) => {
-    const events = getState().events || {};
-    if (events.isEventsFetching) return;
-    dispatch({type: 'EVENTS_FETCH'});
+export function fetchAsync(events) {
+  return (dispatch) => {
+    dispatch({type: 'events.fetch.start'});
 
-    const headers = {};
+    const reqHeaders = {};
     if (events.date) {
-      headers['If-Modified-Since'] = events.date;
+      reqHeaders['If-Modified-Since'] = events.date;
     }
 
     return fetch(`https://api.github.com/users/${username}/received_events`, {
         type: 'GET',
-        headers,
+        reqHeaders,
       })
       .then(res => {
-        const date = res.headers.get('Last-Modified');
-        dispatch({type: 'EVENTS_FETCH_COMPLETE'});
-        dispatch({type: 'EVENTS_SET_DATE', date});
-
-        if (res.status === 200) {
-          res.json().then(items => {
-            if (items.length) dispatch({type: 'EVENTS_SET', items});
-          });
-        }
+        const { headers, data } = res;
+        const date = headers['Last-Modified'];
+        dispatch({type: 'events.fetch.end'});
+        dispatch({type: 'events.set.date', date});
+        dispatch({type: 'events.set.items', data});
       }, error => {
-        dispatch({type: 'EVENTS_FETCH_COMPLETE'});
-        console.log(error);
-      })
+        dispatch({type: 'events.fetch.end'});
+      });
   }
 }
 
-export function markAllRead() {
+export function markAllAsRead() {
   return {
-    type: 'EVENTS_MARK_ALL_READ',
+    type: 'events.markRead.all',
   };
 }
 
-export function markRead(id) {
+export function markOneAsRead(id) {
   return {
-    type: 'EVENTS_MARK_READ',
+    type: 'events.markRead',
     id,
   };
 }

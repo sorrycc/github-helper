@@ -5,7 +5,6 @@ import moment from 'moment';
 export default React.createClass({
 
   propTypes: {
-    date: React.PropTypes.string.isRequired,
   },
 
   handleOpenPreference() {
@@ -17,7 +16,6 @@ export default React.createClass({
   render() {
     return <div className="Footer">
       <button onClick={this.handleOpenPreference}>Preference</button>
-      {moment(new Date(this.props.date)).fromNow()}
     </div>;
   }
 })

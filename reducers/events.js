@@ -4,29 +4,29 @@ export default function(state = { items:[] }, action) {
 
   switch (action.type) {
 
-    case 'EVENTS_FETCH':
+    case 'events.fetch.start':
       return assign({}, state, {
         isFetching: true,
       });
 
-    case 'EVENTS_FETCH_COMPLETE':
+    case 'events.fetch.end':
       return assign({}, state, {
         isFetching: false,
       });
 
-    case 'EVENTS_SET_DATE':
+    case 'events.set.date':
       return assign({}, state, {
         date: action.date,
       });
 
-    case 'EVENTS_SET':
+    case 'events.set.items':
       const ids = state.items.map(item => item.id);
       const newItems = action.items.filter(item => ids.indexOf(item.id) === -1);
       return assign({}, state, {
         items: newItems.concat(state.items).slice(0, 50),
       });
 
-    case 'EVENTS_MARK_ALL_READ':
+    case 'events.markRead.all':
       return assign({}, state, {
         items: state.items.map(event => {
           return assign({}, event, {
@@ -35,7 +35,7 @@ export default function(state = { items:[] }, action) {
         }),
       });
 
-    case 'EVENTS_MARK_READ':
+    case 'events.markRead':
       return assign({}, state, {
         items: state.items.map(item => {
           if (item.id === action.id) {

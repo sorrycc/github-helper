@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import * as eventActions from '../actions/events';
 import * as starActions from '../actions/stars';
 import * as tabActions from '../actions/tabs';
-import Events from '../components/events/Events.jsx';
-import Stars from '../components/stars/Stars.jsx';
+import EventList from '../components/events/EventList.jsx';
+import StarList from '../components/stars/StarList.jsx';
 import Footer from '../components/footer/Footer.jsx';
 import Header from '../components/header/Header.jsx';
 import Tabs, { TabPane } from 'antd/lib/tabs';
@@ -30,10 +30,10 @@ const App = React.createClass({
     return (<div className="App">
       <Header search={_starActions.search} val={stars.key} />
       <Tabs size="small" defaultActiveKey={activeKey} activeKey={activeKey} onChange={this.handleTabChange}>
-        <TabPane tab="Events" key="0"><Events events={events} actions={_eventActions} /></TabPane>
-        <TabPane tab="Stars" key="1"><Stars stars={stars} actions={_starActions} /></TabPane>
+        <TabPane tab="Events" key="0"><EventList events={events} actions={_eventActions} /></TabPane>
+        { /* <TabPane tab="Stars" key="1"><StarList stars={stars} actions={_starActions} /></TabPane> */ }
       </Tabs>
-      <Footer date={events.date} />
+      <Footer />
     </div>);
   },
 });
