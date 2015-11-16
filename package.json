@@ -30,7 +30,7 @@
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "testFileExtensions": [
-      "test.js"
+      "js"
     ],
     "moduleFileExtensions": [
       "js",
@@ -38,13 +38,15 @@
       "jsx"
     ],
     "testPathDirs": [
-      "<rootDir>/actions"
+      "<rootDir>/actions",
+      "<rootDir>/reducers"
     ],
     "unmockedModulePathPatterns": [
       "./node_modules/react",
       "./node_modules/redux-mock-store-jest",
       "./node_modules/redux",
-      "./node_modules/expect"
+      "./node_modules/expect",
+      "./node_modules/object-assign"
     ],
     "verbose": true
   }

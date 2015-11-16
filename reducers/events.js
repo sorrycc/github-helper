@@ -1,6 +1,12 @@
 import assign from 'object-assign';
 
-export default function(state = { items:[] }, action) {
+const initialState = {
+  items: [],
+  isFetching: false,
+  date: null,
+};
+
+export default function(state = initialState, action) {
 
   switch (action.type) {
 
