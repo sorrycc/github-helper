@@ -19,6 +19,7 @@
     "antd-bin": "~0.10.0",
     "babel-jest": "~5.3.0",
     "jest-cli": "~0.7.1",
+    "react-addons-test-utils": "~0.14.1",
     "redux-mock-store-jest": "0.0.2"
   },
   "scripts": {
@@ -39,10 +40,12 @@
     ],
     "testPathDirs": [
       "<rootDir>/actions",
-      "<rootDir>/reducers"
+      "<rootDir>/reducers",
+      "<rootDir>/components"
     ],
     "unmockedModulePathPatterns": [
       "./node_modules/react",
+      "./node_modules/fbjs",
       "./node_modules/redux-mock-store-jest",
       "./node_modules/redux",
       "./node_modules/expect",
