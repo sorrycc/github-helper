@@ -21,7 +21,7 @@ describe('actions/events', () => {
       { type: 'events.fetch.start' },
       { type: 'events.fetch.end' },
       { type: 'events.set.date', date: 'today' },
-      { type: 'events.set.items', data: [1, 2] },
+      { type: 'events.set.items', items: [1, 2] },
     ];
 
     return new Promise(resolve => {

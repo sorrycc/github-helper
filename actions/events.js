@@ -21,7 +21,7 @@ export function fetchAsync(events) {
         const date = headers['Last-Modified'];
         dispatch({type: 'events.fetch.end'});
         dispatch({type: 'events.set.date', date});
-        dispatch({type: 'events.set.items', data});
+        dispatch({type: 'events.set.items', items: data});
       }, error => {
         dispatch({type: 'events.fetch.end'});
       });
